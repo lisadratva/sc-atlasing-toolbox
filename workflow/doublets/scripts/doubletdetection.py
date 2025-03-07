@@ -46,6 +46,8 @@ clf = doubletdetection.BoostClassifier(
     n_components=np.min([adata.n_obs, adata.n_vars, 30]),
     clustering_algorithm="leiden",
     n_jobs=threads,
+    standard_scaling=False, # from tutorial https://doubletdetection.readthedocs.io/en/latest/tutorial.html
+    pseudocount=1,
 )
 labels = clf.fit(adata.X).predict(p_thresh=1e-16, voter_thresh=0.5)
 scores = clf.doublet_score()

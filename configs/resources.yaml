@@ -1,0 +1,4 @@
+partition: gpu
+qos: gpu-normal
+gpu: 1
+mem_mb: 400000

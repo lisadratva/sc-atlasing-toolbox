@@ -1,0 +1,382 @@
+++ realpath ../sc-atlassing-toolbox
++ pipeline=/nfs/team205/ld21/repos/sc-atlassing-toolbox
++ snakemake --profile .profiles/local --configfile configs/resources.yaml configs/load_config.yaml configs/marker_genes.yaml configs/outputs.yaml configs/t_cells_0612.yaml --snakefile /nfs/team205/ld21/repos/sc-atlassing-toolbox/workflow/Snakefile --use-conda --rerun-incomplete --keep-going --printshellcmds clustering_all -c 10
+Using profile .profiles/local for setting default command line arguments.
+Config file configs/outputs.yaml is extended by additional config specified via the command line.
+WARNING:ModuleConfig: No default target specified for module "collect", using default:
+"/nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/collect/dataset~{dataset}.zarr..."
+WARNING:ModuleConfig: No default target specified for module "uncollect", using default:
+"/nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/uncollect/dataset~{dataset}/file_id~{file_id}/new_file_id~{new_file_id}.zarr..."
+WARNING:ModuleConfig: No default target specified for module "exploration", using default:
+"/nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/exploration/dataset~{dataset}/file_id~{file_id}.zarr..."
+WARNING:ModuleConfig: No default target specified for module "sample_representation", using default:
+"/nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/sample_representation/dataset~{dataset}/file_id~{file_id}/method~{method}/input_type~{input_type}/use_rep~{use_rep}/var_mask~{var_mask}.zarr..."
+WARNING:ModuleConfig: No default target specified for module "batch_analysis", using default:
+"/nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/batch_analysis/dataset~{dataset}/file_id~{file_id}.zarr..."
+WARNING:ModuleConfig: No default target specified for module "doublets", using default:
+"/nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/doublets/dataset~{dataset}/file_id~{file_id}.zarr..."
+WARNING:ModuleConfig: No default target specified for module "subset", using default:
+"/nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/subset/dataset~{dataset}/file_id~{file_id}/strategy~{strategy}.zarr..."
+WARNING:ModuleConfig: No default target specified for module "label_transfer", using default:
+"/nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/label_transfer/dataset~{dataset}/file_id~{file_id}.zarr..."
+WARNING:ModuleConfig: No default target specified for module "integration", using default:
+"/nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/integration/dataset~{dataset}/file_id~{file_id}/method~{method}/batch~{batch}/label~{label}/var_mask~{var_mask}/output_type~{output_type}.zarr..."
+WARNING:ModuleConfig: No default target specified for module "marker_genes", using default:
+"/nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/marker_genes/dataset~{dataset}/file_id~{file_id}.zarr..."
+Building DAG of jobs...
+Using shell: /usr/local/bin/bash
+Provided cores: 10
+Rules claiming more threads will be scaled down.
+Singularity containers: ignored
+Job stats:
+job                              count
+-----------------------------  -------
+clustering_all                       1
+clustering_cluster                   8
+clustering_compute_neighbors         1
+clustering_compute_umap              1
+clustering_merge                     1
+clustering_plot_evaluation           1
+clustering_plot_umap                 1
+clustering_plot_umap_clusters        1
+integration_compute_umap             1
+integration_postprocess              1
+integration_prepare                  1
+integration_run_method               1
+label_harmonization_cellhint         1
+total                               20
+
+Select jobs to execute...
+
+[Fri Feb 21 21:36:32 2025]
+Job 8: 
+        Prepare: Prepare dataset=t_cells with file_id=merge:t_cells and var_mask=None
+        input: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/merge/dataset~t_cells.zarr
+        output: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/integration/prepare/dataset~t_cells/file_id~merge:t_cells/var_mask~None.zarr
+        params: batches=dataset_id norm_counts=layers/normcounts raw_counts=layers/raw_counts save_subset=False
+        
+Reason: Updated input files: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/merge/dataset~t_cells.zarr
+
+python -c "from __future__ import print_function; import sys, json; print(json.dumps([sys.version_info.major, sys.version_info.minor]))"
+Activating conda environment: rapids_singlecell
+python /nfs/team205/ld21/repos/sc-atlassing-toolbox/.snakemake/scripts/tmpwj8zenaf.prepare.py
+Activating conda environment: rapids_singlecell
+INFO:root:Using rapids_singlecell...
+INFO:root:Read /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/merge/dataset~t_cells.zarr...
+INFO:root:Determine var_mask...
+INFO:root:Filter all zero genes...
+INFO:root:Read /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/merge/dataset~t_cells.zarr...
+INFO:root:Write /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/integration/prepare/dataset~t_cells/file_id~merge:t_cells/var_mask~None.zarr...
+INFO:root:AnnData object with n_obs × n_vars = 3783527 × 11025
+    obs: '10X_5prime', 'Compartment_prediction', 'Cross_tissue_broad', 'Cross_tissue_detailed', 'IR_VDJ_1_j_call', 'IR_VDJ_1_junction_aa', 'IR_VDJ_1_v_call', 'IR_VJ_1_j_call', 'IR_VJ_1_junction_aa', 'IR_VJ_1_v_call', 'Lindeboom_broad', 'Lindeboom_detailed', 'age', 'alternative_qc_status', 'assay', 'assay_ontology_term_id', 'author_annotation', 'barcode', 'batch_condition', 'cell_passed_qc', 'cell_type', 'cell_type_ontology_term_id', 'dataset', 'dataset_id', 'development_stage', 'development_stage_ontology_term_id', 'disease', 'disease_ontology_term_id', 'doi', 'donor', 'donor_id', 'doubletdetection_prediction', 'doubletdetection_score', 'filtered', 'infection_stage', 'infection_status', 'institution', 'is_primary_data', 'log1p_n_counts', 'log1p_n_genes', 'modalities', 'n_counts', 'n_counts_hb', 'n_counts_mito', 'n_counts_ribo', 'n_genes', 'organ', 'organism', 'organism_ontology_term_id', 'original_annotation', 'passed_qc', 'pathogen', 'percent_hb', 'percent_mito', 'percent_ribo', 'percent_top50', 'pipeline_version', 'qc_status', 'reference', 'sample', 'sample_id', 'scrublet_prediction', 'scrublet_score', 'self_reported_ethnicity', 'self_reported_ethnicity_ontology_term_id', 'sex', 'sex_ontology_term_id', 'study', 'suspension_type', 'tissue', 'tissue_ontology_term_id', 'user_qc_status', '10X_5prime_ECCITE-seq', '10X_3prime', 'Smartseq2', 'Seq_well', 'mCEL-seq2', 'obs_names_before_t_cells'
+    var: 'extra_hvgs', 'feature_biotype', 'feature_name', 'feature_reference', 'filtered_var', 'highly_variable', 'integration_features'
+    uns: 'dataset'
+    layers: 'normcounts', 'counts'
+[Fri Feb 21 21:46:56 2025]
+Finished job 8.
+1 of 20 steps (5%) done
+Select jobs to execute...
+
+[Fri Feb 21 21:46:56 2025]
+Job 7: 
+       Integration: Run integration method scvi on dataset=t_cells file_id=merge:t_cells
+       input: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/integration/prepare/dataset~t_cells/file_id~merge:t_cells/var_mask~None.zarr
+       output: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/integration/run_method/dataset~t_cells/file_id~merge:t_cells/batch~dataset_id/var_mask~None/method~scvi--hyperparams~e774194f5f--label~None/adata.zarr /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/integration/run_method/dataset~t_cells/file_id~merge:t_cells/batch~dataset_id/var_mask~None/method~scvi--hyperparams~e774194f5f--label~None/model /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/images/integration/run_method/dataset~t_cells/file_id~merge:t_cells/batch~dataset_id/var_mask~None/method~scvi--hyperparams~e774194f5f--label~None
+       wildcards: batch=dataset_id,dataset=t_cells,file_id=merge:t_cells,hyperparams=e774194f5f,label=None,method=scvi,var_mask=None
+       resources: gpu= mem_mb= partition= qos=
+       
+Reason: Missing output files: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/integration/run_method/dataset~t_cells/file_id~merge:t_cells/batch~dataset_id/var_mask~None/method~scvi--hyperparams~e774194f5f--label~None/adata.zarr, /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/integration/run_method/dataset~t_cells/file_id~merge:t_cells/batch~dataset_id/var_mask~None/method~scvi--hyperparams~e774194f5f--label~None/model; Input files updated by another job: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/integration/prepare/dataset~t_cells/file_id~merge:t_cells/var_mask~None.zarr
+
+python -c "from __future__ import print_function; import sys, json; print(json.dumps([sys.version_info.major, sys.version_info.minor]))"
+Activating conda environment: scvi-tools
+python /nfs/team205/ld21/repos/sc-atlassing-toolbox/.snakemake/scripts/tmpt3tt8tvh.scvi.py
+Activating conda environment: scvi-tools
+INFO:root:Importing rapids failed, using scanpy...
+Seed set to 0
+INFO:root:model parameters:
+{'n_latent': 30, 'n_layers': 2}
+training parameters:
+{'early_stopping': True, 'max_epochs': 40}
+INFO:root:Read /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/integration/prepare/dataset~t_cells/file_id~merge:t_cells/var_mask~None.zarr...
+/nfs/team205/ld21/repos/sc-atlassing-toolbox/workflow/integration/rules/../scripts/methods/utils/accessors.py:83: UserWarning: All genes are highly variable, not subsetting
+  warnings.warn('All genes are highly variable, not subsetting')
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/data/fields/_base_field.py:63: UserWarning: adata.X does not contain unnormalized count data. Are you sure this is what you want?
+  self.validate_field(adata)
+INFO:root:Set up scVI with parameters:
+{'n_latent': 30, 'n_layers': 2}
+INFO:root:Train scVI with parameters:
+{'early_stopping': True, 'max_epochs': 40}
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/lightning/pytorch/trainer/connectors/data_connector.py:424: The 'train_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=9` in the `DataLoader` to improve performance.
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/lightning/pytorch/trainer/connectors/data_connector.py:424: The 'val_dataloader' does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` to `num_workers=9` in the `DataLoader` to improve performance.
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/scvi-tools/lib/python3.12/site-packages/scvi/module/_vae.py:565: UserWarning: The value argument must be within the support of the distribution
+  reconst_loss = -generative_outputs[MODULE_KEYS.PX_KEY].log_prob(x).sum(-1)
+`Trainer.fit` stopped: `max_epochs=40` reached.
+INFO:root:Save model...
+INFO:root:Write /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/integration/run_method/dataset~t_cells/file_id~merge:t_cells/batch~dataset_id/var_mask~None/method~scvi--hyperparams~e774194f5f--label~None/adata.zarr...
+INFO:root:AnnData object with n_obs × n_vars = 3783527 × 11025
+    obs: '10X_5prime', 'Compartment_prediction', 'Cross_tissue_broad', 'Cross_tissue_detailed', 'IR_VDJ_1_j_call', 'IR_VDJ_1_junction_aa', 'IR_VDJ_1_v_call', 'IR_VJ_1_j_call', 'IR_VJ_1_junction_aa', 'IR_VJ_1_v_call', 'Lindeboom_broad', 'Lindeboom_detailed', 'age', 'alternative_qc_status', 'assay', 'assay_ontology_term_id', 'author_annotation', 'barcode', 'batch_condition', 'cell_passed_qc', 'cell_type', 'cell_type_ontology_term_id', 'dataset', 'dataset_id', 'development_stage', 'development_stage_ontology_term_id', 'disease', 'disease_ontology_term_id', 'doi', 'donor', 'donor_id', 'doubletdetection_prediction', 'doubletdetection_score', 'filtered', 'infection_stage', 'infection_status', 'institution', 'is_primary_data', 'log1p_n_counts', 'log1p_n_genes', 'modalities', 'n_counts', 'n_counts_hb', 'n_counts_mito', 'n_counts_ribo', 'n_genes', 'organ', 'organism', 'organism_ontology_term_id', 'original_annotation', 'passed_qc', 'pathogen', 'percent_hb', 'percent_mito', 'percent_ribo', 'percent_top50', 'pipeline_version', 'qc_status', 'reference', 'sample', 'sample_id', 'scrublet_prediction', 'scrublet_score', 'self_reported_ethnicity', 'self_reported_ethnicity_ontology_term_id', 'sex', 'sex_ontology_term_id', 'study', 'suspension_type', 'tissue', 'tissue_ontology_term_id', 'user_qc_status', '10X_5prime_ECCITE-seq', '10X_3prime', 'Smartseq2', 'Seq_well', 'mCEL-seq2', 'obs_names_before_t_cells', '_scvi_batch', '_scvi_labels'
+    var: 'extra_hvgs', 'feature_biotype', 'feature_name', 'feature_reference', 'filtered_var', 'highly_variable', 'integration_features'
+    uns: 'dataset', '_scvi_uuid', '_scvi_manager_uuid', 'integration', 'wildcards'
+    obsm: '_scvi_extra_categorical_covs', 'X_emb'
+Touching output file /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/integration/run_method/dataset~t_cells/file_id~merge:t_cells/batch~dataset_id/var_mask~None/method~scvi--hyperparams~e774194f5f--label~None/model.
+Touching output file /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/images/integration/run_method/dataset~t_cells/file_id~merge:t_cells/batch~dataset_id/var_mask~None/method~scvi--hyperparams~e774194f5f--label~None.
+[Sat Feb 22 03:16:11 2025]
+Finished job 7.
+2 of 20 steps (10%) done
+Select jobs to execute...
+
+[Sat Feb 22 03:16:11 2025]
+rule integration_postprocess:
+    input: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/integration/run_method/dataset~t_cells/file_id~merge:t_cells/batch~dataset_id/var_mask~None/method~scvi--hyperparams~e774194f5f--label~None/adata.zarr, /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/integration/run_method/dataset~t_cells/file_id~merge:t_cells/batch~dataset_id/var_mask~None/method~scvi--hyperparams~e774194f5f--label~None/model
+    output: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/integration/postprocess/dataset~t_cells/file_id~merge:t_cells/batch~dataset_id/var_mask~None/method~scvi--hyperparams~e774194f5f--label~None--output_type~embed.zarr
+    jobid: 6
+    reason: Missing output files: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/integration/postprocess/dataset~t_cells/file_id~merge:t_cells/batch~dataset_id/var_mask~None/method~scvi--hyperparams~e774194f5f--label~None--output_type~embed.zarr; Input files updated by another job: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/integration/run_method/dataset~t_cells/file_id~merge:t_cells/batch~dataset_id/var_mask~None/method~scvi--hyperparams~e774194f5f--label~None/adata.zarr, /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/integration/run_method/dataset~t_cells/file_id~merge:t_cells/batch~dataset_id/var_mask~None/method~scvi--hyperparams~e774194f5f--label~None/model
+    wildcards: dataset=t_cells, file_id=merge:t_cells, batch=dataset_id, var_mask=None, method=scvi, hyperparams=e774194f5f, label=None, output_type=embed
+    resources: tmpdir=/tmp, partition=, qos=, gpu=, mem_mb=
+
+python -c "from __future__ import print_function; import sys, json; print(json.dumps([sys.version_info.major, sys.version_info.minor]))"
+Activating conda environment: rapids_singlecell
+python /nfs/team205/ld21/repos/sc-atlassing-toolbox/.snakemake/scripts/tmpe0c_lbwg.neighbors.py
+Activating conda environment: rapids_singlecell
+INFO:root:Using rapids_singlecell...
+INFO:root:Read /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/integration/run_method/dataset~t_cells/file_id~merge:t_cells/batch~dataset_id/var_mask~None/method~scvi--hyperparams~e774194f5f--label~None/adata.zarr...
+INFO:root:parameters: {'use_rep': 'X_emb', 'n_neighbors': 15}
+INFO:root:Write to /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/integration/postprocess/dataset~t_cells/file_id~merge:t_cells/batch~dataset_id/var_mask~None/method~scvi--hyperparams~e774194f5f--label~None--output_type~embed.zarr...
+INFO:root:AnnData object with n_obs × n_vars = 3783527 × 11025
+    obs: '10X_3prime', '10X_5prime', '10X_5prime_ECCITE-seq', 'Compartment_prediction', 'Cross_tissue_broad', 'Cross_tissue_detailed', 'IR_VDJ_1_j_call', 'IR_VDJ_1_junction_aa', 'IR_VDJ_1_v_call', 'IR_VJ_1_j_call', 'IR_VJ_1_junction_aa', 'IR_VJ_1_v_call', 'Lindeboom_broad', 'Lindeboom_detailed', 'Seq_well', 'Smartseq2', 'age', 'alternative_qc_status', 'assay', 'assay_ontology_term_id', 'author_annotation', 'barcode', 'batch_condition', 'cell_passed_qc', 'cell_type', 'cell_type_ontology_term_id', 'dataset', 'dataset_id', 'development_stage', 'development_stage_ontology_term_id', 'disease', 'disease_ontology_term_id', 'doi', 'donor', 'donor_id', 'doubletdetection_prediction', 'doubletdetection_score', 'filtered', 'infection_stage', 'infection_status', 'institution', 'is_primary_data', 'log1p_n_counts', 'log1p_n_genes', 'mCEL-seq2', 'modalities', 'n_counts', 'n_counts_hb', 'n_counts_mito', 'n_counts_ribo', 'n_genes', 'obs_names_before_t_cells', 'organ', 'organism', 'organism_ontology_term_id', 'original_annotation', 'passed_qc', 'pathogen', 'percent_hb', 'percent_mito', 'percent_ribo', 'percent_top50', 'pipeline_version', 'qc_status', 'reference', 'sample', 'sample_id', 'scrublet_prediction', 'scrublet_score', 'self_reported_ethnicity', 'self_reported_ethnicity_ontology_term_id', 'sex', 'sex_ontology_term_id', 'study', 'suspension_type', 'tissue', 'tissue_ontology_term_id', 'user_qc_status'
+    var: 'extra_hvgs', 'feature_biotype', 'feature_name', 'feature_reference', 'filtered_var', 'highly_variable', 'integration_features'
+    uns: '_scvi_manager_uuid', '_scvi_uuid', 'dataset', 'integration', 'wildcards', 'neighbors', 'output_type'
+    obsm: 'X_emb', '_scvi_extra_categorical_covs'
+    layers: 'counts', 'normcounts', 'raw_counts'
+    obsp: 'distances', 'connectivities'
+[Sat Feb 22 03:23:17 2025]
+Finished job 6.
+3 of 20 steps (15%) done
+Select jobs to execute...
+
+[Sat Feb 22 03:23:17 2025]
+rule integration_compute_umap:
+    input: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/integration/postprocess/dataset~t_cells/file_id~merge:t_cells/batch~dataset_id/var_mask~None/method~scvi--hyperparams~e774194f5f--label~None--output_type~embed.zarr, /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/integration/postprocess/dataset~t_cells/file_id~merge:t_cells/batch~dataset_id/var_mask~None/method~scvi--hyperparams~e774194f5f--label~None--output_type~embed.zarr
+    output: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/integration/dataset~t_cells/file_id~merge:t_cells/batch~dataset_id/var_mask~None/method~scvi--hyperparams~e774194f5f--label~None--output_type~embed.zarr
+    jobid: 5
+    reason: Missing output files: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/integration/dataset~t_cells/file_id~merge:t_cells/batch~dataset_id/var_mask~None/method~scvi--hyperparams~e774194f5f--label~None--output_type~embed.zarr; Input files updated by another job: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/integration/postprocess/dataset~t_cells/file_id~merge:t_cells/batch~dataset_id/var_mask~None/method~scvi--hyperparams~e774194f5f--label~None--output_type~embed.zarr
+    wildcards: dataset=t_cells, file_id=merge:t_cells, batch=dataset_id, var_mask=None, method=scvi, hyperparams=e774194f5f, label=None, output_type=embed
+    resources: tmpdir=/tmp, partition=, qos=, mem_mb=, gpu=
+
+python -c "from __future__ import print_function; import sys, json; print(json.dumps([sys.version_info.major, sys.version_info.minor]))"
+Activating conda environment: rapids_singlecell
+python /nfs/team205/ld21/repos/sc-atlassing-toolbox/.snakemake/scripts/tmp4wedmjux.umap.py
+Activating conda environment: rapids_singlecell
+INFO:root:Using rapids_singlecell...
+INFO:root:Read /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/integration/postprocess/dataset~t_cells/file_id~merge:t_cells/batch~dataset_id/var_mask~None/method~scvi--hyperparams~e774194f5f--label~None--output_type~embed.zarr...
+INFO:root:Read representation file /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/integration/postprocess/dataset~t_cells/file_id~merge:t_cells/batch~dataset_id/var_mask~None/method~scvi--hyperparams~e774194f5f--label~None--output_type~embed.zarr for use_rep="X_emb"...
+INFO:root:Compute UMAP...
+INFO:root:Write to /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/integration/dataset~t_cells/file_id~merge:t_cells/batch~dataset_id/var_mask~None/method~scvi--hyperparams~e774194f5f--label~None--output_type~embed.zarr...
+[Sat Feb 22 03:25:08 2025]
+Finished job 5.
+4 of 20 steps (20%) done
+Select jobs to execute...
+
+[Sat Feb 22 03:25:08 2025]
+rule label_harmonization_cellhint:
+    input: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/integration/dataset~t_cells/file_id~merge:t_cells/batch~dataset_id/var_mask~None/method~scvi--hyperparams~e774194f5f--label~None--output_type~embed.zarr
+    output: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/label_harmonization/dataset~t_cells/file_id~integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/cellhint/adata.zarr, /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/label_harmonization/dataset~t_cells/file_id~integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/cellhint/reannotation.tsv, /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/images/label_harmonization/dataset~t_cells/file_id~integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/cellhint/relation.tsv, /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/label_harmonization/dataset~t_cells/file_id~integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/cellhint/model.pkl
+    jobid: 4
+    reason: Missing output files: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/label_harmonization/dataset~t_cells/file_id~integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/cellhint/adata.zarr; Input files updated by another job: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/integration/dataset~t_cells/file_id~merge:t_cells/batch~dataset_id/var_mask~None/method~scvi--hyperparams~e774194f5f--label~None--output_type~embed.zarr
+    wildcards: dataset=t_cells, file_id=integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f
+    resources: tmpdir=/tmp, partition=, qos=, mem_mb=
+
+python -c "from __future__ import print_function; import sys, json; print(json.dumps([sys.version_info.major, sys.version_info.minor]))"
+Activating conda environment: cellhint
+python /nfs/team205/ld21/repos/sc-atlassing-toolbox/.snakemake/scripts/tmp__uy0aqj.cellhint.py
+Activating conda environment: cellhint
+INFO:root:Importing rapids failed, using scanpy...
+INFO:root:params: {'use_rep': 'X_emb', 'use_pct': False}
+INFO:root:Read /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/integration/dataset~t_cells/file_id~merge:t_cells/batch~dataset_id/var_mask~None/method~scvi--hyperparams~e774194f5f--label~None--output_type~embed.zarr...
+INFO:root:Harmonize with CellHint...
+INFO:cellhint.logger:🏆 Reordering datasets
+INFO:cellhint.logger:🖇 Harmonizing cell types of GSE173231 and GSE180268
+INFO:cellhint.logger:🖇 Harmonizing cell types of BEAM  
+INFO:cellhint.logger:🖇 Harmonizing cell types of GSE162097
+INFO:cellhint.logger:🖇 Harmonizing cell types of GSE234241
+INFO:cellhint.logger:🖇 Harmonizing cell types of GSE259231
+INFO:cellhint.logger:🖇 Harmonizing cell types of GSE187515
+INFO:cellhint.logger:🖇 Harmonizing cell types of GSE182536
+INFO:cellhint.logger:🖇 Harmonizing cell types of Hatje_2024
+INFO:cellhint.logger:🖇 Harmonizing cell types of GSE158769
+INFO:cellhint.logger:🖇 Harmonizing cell types of HRA000190
+INFO:cellhint.logger:🖇 Harmonizing cell types of Stephenson_2021
+INFO:cellhint.logger:🖇 Harmonizing cell types of GSE287808
+INFO:cellhint.logger:🖇 Harmonizing cell types of COMBAT_2022
+INFO:cellhint.logger:🖇 Harmonizing cell types of Yoshida_2021
+INFO:cellhint.logger:🖇 Harmonizing cell types of ESKD_2024
+INFO:cellhint.logger:🖇 Harmonizing cell types of Liu_2021
+INFO:cellhint.logger:🖇 Harmonizing cell types of Waradon_Dengue
+INFO:cellhint.logger:🖇 Harmonizing cell types of Reyes_2020
+INFO:cellhint.logger:🖇 Harmonizing cell types of GSE217930
+INFO:cellhint.logger:🖇 Harmonizing cell types of Lindeboom_2024
+INFO:cellhint.logger:🖇 Harmonizing cell types of GSE182159
+INFO:cellhint.logger:🖇 Harmonizing cell types of Ren_2021
+User defined signal 2

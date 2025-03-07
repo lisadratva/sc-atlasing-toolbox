@@ -1,4 +1,4 @@
-  output_dir: data/out
+  output_dir: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out
   images: images
 
   DATASETS:
@@ -8,14 +8,16 @@
       # input specification: map of module name to map of input file name to input file path
       input:
         preprocessing:
-          file_1: data/pbmc68k.h5ad
-        integration: preprocessing # all outputs of module will automatically be used as input
-        metrics: integration
+          file_1: data/GSE182536_for_integration.h5ad
+          file_1: data/GSE173231_for_integration.h5ad
+          file_1: data/Coates_NALT_for_integration.h5ad
+        # integration: preprocessing # all outputs of module will automatically be used as input
+        # metrics: integration
       
       # module configuration
       preprocessing:
-        highly_variable_genes:
-          n_top_genes: 2000
+        # highly_variable_genes:
+          # n_top_genes: 2000
         pca:
           n_comps: 50
         assemble:

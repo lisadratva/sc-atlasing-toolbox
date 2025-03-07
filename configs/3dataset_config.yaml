@@ -1,0 +1,54 @@
+  output_dir: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out
+  images: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/images
+
+  use_gpu: false
+
+  DATASETS:
+
+    pan_infection_test: # custom task/workflow name
+
+      # input specification: map of module name to map of input file name to input file path
+      input:
+        preprocessing:
+          GSE182536: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/data/GSE182536_for_integration.h5ad
+          GSE173231: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/data/GSE173231_for_integration.h5ad
+          Coates_NALT: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/data/Coates_NALT_for_integration.h5ad
+        # integration: preprocessing # all outputs of module will automatically be used as input
+        # metrics: integration
+      
+      # module configuration
+      preprocessing:
+        raw_counts: X
+        highly_variable_genes:
+          n_top_genes: 2000
+        pca:
+          n_comps: 50
+        assemble:
+          - counts
+          - normalize
+          - highly_variable_genes
+          # - pca
+          # - neighbors
+          # - umap
+      
+      # module configuration
+      integration:
+        raw_counts: raw/X
+        norm_counts: X
+        batch: batch
+        methods:
+          unintegrated:
+          scanorama:
+            batch_size: 100
+          scvi:
+            max_epochs: 10
+            early_stopping: true
+
+      # module configuration
+      metrics:
+        unintegrated: layers/norm_counts
+        batch: batch
+        label: bulk_labels
+        methods:
+          - nmi
+          - graph_connectivity

@@ -1,12 +1,23 @@
 rule save_config:
     output:
-        json='.snakemake/{images}_{target}/config.json'
+        json='{images}_{target}/config.json'
     localrule: True
     run:
+        # import json
+
+        # with open(output.json,'w') as f:
+        #     json.dump(config,f)
+
         import json
+        from pathlib import Path
+
+        # Convert all PosixPath objects in the config dictionary to strings
+        # This is assuming that `config` is a dictionary that might contain `PosixPath` objects.
+        # Adjust the dictionary comprehension below if the structure of `config` is more complex.
+        config_converted = {k: str(v) if isinstance(v, Path) else v for k, v in config.items()}
 
         with open(output.json,'w') as f:
-            json.dump(config,f)
+            json.dump(config_converted, f)
 
 
 rule rulegraph:

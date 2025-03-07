@@ -29,7 +29,7 @@ def assemble_adata(file, file_type, adata, backed=True):
         logging.info('add normalised counts')
         adata_pp = read_anndata(file, X='X', backed=backed)
         adata.layers['normcounts'] = adata_pp[:, adata.var_names].X
-        adata.X = adata.layers['normcounts']
+        # adata.X = adata.layers['normcounts']
     elif file_type == 'highly_variable_genes':
         logging.info('add highly variable genes')
         adata_pp = read_anndata(file, var='var')
@@ -83,7 +83,7 @@ def assemble_zarr(file, file_type, slot_map, in_dir_map):
     if file_type == 'normalize':
         logging.info('add normalised counts')
         update_slot_map = {
-            'X': 'X',
+            # 'X': 'X',
             'layers': 'layers',
             'raw': 'raw',
             'uns/log1p': 'uns/log1p',

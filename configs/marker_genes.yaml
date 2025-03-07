@@ -1,0 +1,32 @@
+MARKER_GENES:
+  T cells:
+    Lymphocytes:
+      - PTPRC
+    T cells:
+      - CD3D
+      - CD3E
+      - TRAC
+      - TRGC1
+      - TRGC2
+      - TRDC 
+    CD4+ T:
+      - CD4
+      - CD40LG
+      - ITGB1
+      - KLRB1
+      - GZMA
+    CD8+ T:
+      - CD8A
+      - CD8B
+      - CST7
+      - TRAV1-2
+      - NCR3
+      - SLC4A10
+    Treg:
+      - FOXP3
+      - RTKN2
+      - IL2RA
+      - CTLA4
+    MAI T:
+      - TRAV1-2
+      - SLC4A10

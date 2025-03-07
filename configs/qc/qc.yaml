@@ -1,0 +1,32 @@
+DATASETS:
+  quality_control:
+    input:
+      qc:
+        # Coates_NALT: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/load_data/harmonize_metadata/Coates_NALT.zarr
+        # GSE173231: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/load_data/harmonize_metadata/GSE173231.zarr
+        # GSE180268: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/load_data/harmonize_metadata/GSE180268.zarr
+        COMBAT_2022: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/load_data/harmonize_metadata/COMBAT_2022.zarr
+        Yoshida_2021: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/load_data/harmonize_metadata/Yoshida_2021.zarr
+        GSE180268: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/load_data/harmonize_metadata/GSE180268.zarr
+        Lindeboom_2024_NP: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/load_data/harmonize_metadata/Lindeboom_2024_NP.zarr
+        GSE182536: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/load_data/harmonize_metadata/GSE182536.zarr
+        GSE187515: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/load_data/harmonize_metadata/GSE187515.zarr
+        Liu_2021: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/load_data/harmonize_metadata/Liu_2021.zarr
+        GSE217930: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/load_data/harmonize_metadata/GSE217930.zarr
+        Waradon_Dengue: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/load_data/harmonize_metadata/Waradon_Dengue.zarr
+        Lindeboom_2024_PBMC: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/load_data/harmonize_metadata/Lindeboom_2024_PBMC.zarr
+        GSE182159_Liver: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/load_data/harmonize_metadata/GSE182159_Liver.zarr
+        GSE173231: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/load_data/harmonize_metadata/GSE173231.zarr
+        Reyes_2020: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/load_data/harmonize_metadata/Reyes_2020.zarr
+        Coates_NALT: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/load_data/harmonize_metadata/Coates_NALT.zarr
+        Stephenson_2021: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/load_data/harmonize_metadata/Stephenson_2021.zarr
+        GSE158769: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/load_data/harmonize_metadata/GSE158769.zarr
+      doublets: qc
+      preprocessing: doublets
+
+    qc:
+      hue:  # colors for colouring joint plots and stratify removed cells plots
+        - phase
+        - cell_type
+    # doublets:
+      # batch: sample_id # needs to be a single value, can't be a list - takes a very long time as each dataset is split by batch first and doublets calculated on each batch

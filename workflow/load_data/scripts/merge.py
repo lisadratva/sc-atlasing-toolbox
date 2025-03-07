@@ -137,7 +137,7 @@ assert 'feature_name' in adata.var
 
 # add uns data
 organ = adata.obs['organ'].unique()
-assert len(organ) == 1
+# assert len(organ) == 1 # for our purpose, some organs should be integrated together
 adata.uns['dataset'] = dataset
 adata.uns['organ'] = organ
 adata.uns['meta'] = {

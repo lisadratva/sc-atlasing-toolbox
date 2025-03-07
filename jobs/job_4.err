@@ -1,0 +1,445 @@
+/tmp/1740350721.790135.shell: line 17: activate: No such file or directory
+++ realpath ../sc-atlassing-toolbox
++ pipeline=/nfs/team205/ld21/repos/sc-atlassing-toolbox
++ snakemake --profile .profiles/local --configfile configs/resources.yaml configs/load_config.yaml configs/marker_genes.yaml configs/outputs.yaml configs/t_cells_0612.yaml --snakefile /nfs/team205/ld21/repos/sc-atlassing-toolbox/workflow/Snakefile --use-conda --rerun-incomplete --keep-going --printshellcmds clustering_all -c 10
+Using profile .profiles/local for setting default command line arguments.
+Config file configs/outputs.yaml is extended by additional config specified via the command line.
+WARNING:ModuleConfig: No default target specified for module "collect", using default:
+"/nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/collect/dataset~{dataset}.zarr..."
+WARNING:ModuleConfig: No default target specified for module "uncollect", using default:
+"/nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/uncollect/dataset~{dataset}/file_id~{file_id}/new_file_id~{new_file_id}.zarr..."
+WARNING:ModuleConfig: No default target specified for module "exploration", using default:
+"/nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/exploration/dataset~{dataset}/file_id~{file_id}.zarr..."
+WARNING:ModuleConfig: No default target specified for module "sample_representation", using default:
+"/nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/sample_representation/dataset~{dataset}/file_id~{file_id}/method~{method}/input_type~{input_type}/use_rep~{use_rep}/var_mask~{var_mask}.zarr..."
+WARNING:ModuleConfig: No default target specified for module "batch_analysis", using default:
+"/nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/batch_analysis/dataset~{dataset}/file_id~{file_id}.zarr..."
+WARNING:ModuleConfig: No default target specified for module "doublets", using default:
+"/nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/doublets/dataset~{dataset}/file_id~{file_id}.zarr..."
+WARNING:ModuleConfig: No default target specified for module "subset", using default:
+"/nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/subset/dataset~{dataset}/file_id~{file_id}/strategy~{strategy}.zarr..."
+WARNING:ModuleConfig: No default target specified for module "label_transfer", using default:
+"/nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/label_transfer/dataset~{dataset}/file_id~{file_id}.zarr..."
+WARNING:ModuleConfig: No default target specified for module "integration", using default:
+"/nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/integration/dataset~{dataset}/file_id~{file_id}/method~{method}/batch~{batch}/label~{label}/var_mask~{var_mask}/output_type~{output_type}.zarr..."
+WARNING:ModuleConfig: No default target specified for module "marker_genes", using default:
+"/nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/marker_genes/dataset~{dataset}/file_id~{file_id}.zarr..."
+Building DAG of jobs...
+Using shell: /usr/local/bin/bash
+Provided cores: 10
+Rules claiming more threads will be scaled down.
+Singularity containers: ignored
+Job stats:
+job                              count
+-----------------------------  -------
+clustering_all                       1
+clustering_cluster                   8
+clustering_compute_neighbors         1
+clustering_compute_umap              1
+clustering_merge                     1
+clustering_plot_evaluation           1
+clustering_plot_umap                 1
+clustering_plot_umap_clusters        1
+label_harmonization_cellhint         1
+total                               16
+
+Select jobs to execute...
+
+[Sun Feb 23 22:45:53 2025]
+rule label_harmonization_cellhint:
+    input: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/integration/dataset~t_cells/file_id~merge:t_cells/batch~dataset_id/var_mask~None/method~scvi--hyperparams~e774194f5f--label~None--output_type~embed.zarr
+    output: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/label_harmonization/dataset~t_cells/file_id~integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/cellhint/adata.zarr, /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/label_harmonization/dataset~t_cells/file_id~integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/cellhint/reannotation.tsv, /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/images/label_harmonization/dataset~t_cells/file_id~integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/cellhint/relation.tsv, /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/label_harmonization/dataset~t_cells/file_id~integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/cellhint/model.pkl
+    jobid: 4
+    reason: Missing output files: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/label_harmonization/dataset~t_cells/file_id~integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/cellhint/adata.zarr
+    wildcards: dataset=t_cells, file_id=integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f
+    resources: tmpdir=/tmp, partition=, qos=, mem_mb=
+
+python -c "from __future__ import print_function; import sys, json; print(json.dumps([sys.version_info.major, sys.version_info.minor]))"
+Activating conda environment: cellhint
+python /nfs/team205/ld21/repos/sc-atlassing-toolbox/.snakemake/scripts/tmpd7uscuf4.cellhint.py
+Activating conda environment: cellhint
+INFO:root:Importing rapids failed, using scanpy...
+INFO:root:params: {'use_rep': 'X_emb', 'use_pct': False}
+INFO:root:Read /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/integration/dataset~t_cells/file_id~merge:t_cells/batch~dataset_id/var_mask~None/method~scvi--hyperparams~e774194f5f--label~None--output_type~embed.zarr...
+INFO:root:Harmonize with CellHint...
+INFO:cellhint.logger:🏆 Reordering datasets
+INFO:cellhint.logger:🖇 Harmonizing cell types of GSE173231 and GSE180268
+INFO:cellhint.logger:🖇 Harmonizing cell types of BEAM  
+INFO:cellhint.logger:🖇 Harmonizing cell types of GSE162097
+INFO:cellhint.logger:🖇 Harmonizing cell types of GSE234241
+INFO:cellhint.logger:🖇 Harmonizing cell types of GSE259231
+INFO:cellhint.logger:🖇 Harmonizing cell types of GSE187515
+INFO:cellhint.logger:🖇 Harmonizing cell types of GSE182536
+INFO:cellhint.logger:🖇 Harmonizing cell types of Hatje_2024
+INFO:cellhint.logger:🖇 Harmonizing cell types of GSE158769
+INFO:cellhint.logger:🖇 Harmonizing cell types of HRA000190
+INFO:cellhint.logger:🖇 Harmonizing cell types of Stephenson_2021
+INFO:cellhint.logger:🖇 Harmonizing cell types of GSE287808
+INFO:cellhint.logger:🖇 Harmonizing cell types of COMBAT_2022
+INFO:cellhint.logger:🖇 Harmonizing cell types of Yoshida_2021
+INFO:cellhint.logger:🖇 Harmonizing cell types of ESKD_2024
+INFO:cellhint.logger:🖇 Harmonizing cell types of Liu_2021
+INFO:cellhint.logger:🖇 Harmonizing cell types of Waradon_Dengue
+INFO:cellhint.logger:🖇 Harmonizing cell types of Reyes_2020
+INFO:cellhint.logger:🖇 Harmonizing cell types of GSE217930
+INFO:cellhint.logger:🖇 Harmonizing cell types of Lindeboom_2024
+INFO:cellhint.logger:🖇 Harmonizing cell types of GSE182159
+INFO:cellhint.logger:🖇 Harmonizing cell types of Ren_2021
+INFO:cellhint.logger:🖋️ Reannotating cells
+INFO:cellhint.logger:✅ Harmonization done!
+INFO:root:Write /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/label_harmonization/dataset~t_cells/file_id~integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/cellhint/adata.zarr...
+... storing 'reannotation_index' as categorical
+... storing 'reannotation' as categorical
+... storing 'group' as categorical
+[Mon Feb 24 07:21:54 2025]
+Finished job 4.
+1 of 16 steps (6%) done
+Select jobs to execute...
+
+[Mon Feb 24 07:21:54 2025]
+rule clustering_compute_neighbors:
+    input: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/label_harmonization/dataset~t_cells/file_id~integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/cellhint/adata.zarr
+    output: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/neighbors/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~None/resolution~None/level~1.zarr
+    jobid: 3
+    reason: Missing output files: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/neighbors/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~None/resolution~None/level~1.zarr; Input files updated by another job: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/label_harmonization/dataset~t_cells/file_id~integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/cellhint/adata.zarr
+    wildcards: dataset=t_cells, file_id=label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f, algorithm=None, resolution=None, level=1
+    resources: tmpdir=/tmp, partition=, qos=, mem_mb=, gpu=
+
+python -c "from __future__ import print_function; import sys, json; print(json.dumps([sys.version_info.major, sys.version_info.minor]))"
+Activating conda environment: rapids_singlecell
+python /nfs/team205/ld21/repos/sc-atlassing-toolbox/.snakemake/scripts/tmp9whanj4u.neighbors.py
+Activating conda environment: rapids_singlecell
+INFO:root:Using rapids_singlecell...
+INFO:root:Read /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/label_harmonization/dataset~t_cells/file_id~integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/cellhint/adata.zarr...
+INFO:root:parameters: {'n_neighbors': 30, 'use_rep': 'X_emb'}
+INFO:root:Write to /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/neighbors/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~None/resolution~None/level~1.zarr...
+INFO:root:AnnData object with n_obs × n_vars = 3783527 × 11025
+    obs: '10X_3prime', '10X_5prime', '10X_5prime_ECCITE-seq', 'Compartment_prediction', 'Cross_tissue_broad', 'Cross_tissue_detailed', 'IR_VDJ_1_j_call', 'IR_VDJ_1_junction_aa', 'IR_VDJ_1_v_call', 'IR_VJ_1_j_call', 'IR_VJ_1_junction_aa', 'IR_VJ_1_v_call', 'Lindeboom_broad', 'Lindeboom_detailed', 'Seq_well', 'Smartseq2', 'age', 'alternative_qc_status', 'assay', 'assay_ontology_term_id', 'author_annotation', 'barcode', 'batch_condition', 'cell_passed_qc', 'cell_type', 'cell_type_ontology_term_id', 'dataset', 'dataset_id', 'development_stage', 'development_stage_ontology_term_id', 'disease', 'disease_ontology_term_id', 'doi', 'donor', 'donor_id', 'doubletdetection_prediction', 'doubletdetection_score', 'filtered', 'infection_stage', 'infection_status', 'institution', 'is_primary_data', 'log1p_n_counts', 'log1p_n_genes', 'mCEL-seq2', 'modalities', 'n_counts', 'n_counts_hb', 'n_counts_mito', 'n_counts_ribo', 'n_genes', 'obs_names_before_t_cells', 'organ', 'organism', 'organism_ontology_term_id', 'original_annotation', 'passed_qc', 'pathogen', 'percent_hb', 'percent_mito', 'percent_ribo', 'percent_top50', 'pipeline_version', 'qc_status', 'reference', 'sample', 'sample_id', 'scrublet_prediction', 'scrublet_score', 'self_reported_ethnicity', 'self_reported_ethnicity_ontology_term_id', 'sex', 'sex_ontology_term_id', 'study', 'suspension_type', 'tissue', 'tissue_ontology_term_id', 'user_qc_status', 'reannotation_index', 'reannotation', 'group'
+    var: 'extra_hvgs', 'feature_biotype', 'feature_name', 'feature_reference', 'filtered_var', 'highly_variable', 'integration_features'
+    uns: '_scvi_manager_uuid', '_scvi_uuid', 'dataset', 'integration', 'neighbors', 'output_type', 'umap', 'wildcards'
+    obsm: 'X_emb', 'X_umap'
+    layers: 'counts', 'normcounts', 'raw_counts'
+    obsp: 'distances', 'connectivities'
+[Mon Feb 24 07:31:23 2025]
+Finished job 3.
+2 of 16 steps (12%) done
+Select jobs to execute...
+
+[Mon Feb 24 07:31:23 2025]
+rule clustering_cluster:
+    input: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/neighbors/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~None/resolution~None/level~1.zarr
+    output: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/resolutions/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~leiden/resolution~1.1/level~1.zarr
+    jobid: 190
+    reason: Missing output files: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/resolutions/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~leiden/resolution~1.1/level~1.zarr; Input files updated by another job: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/neighbors/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~None/resolution~None/level~1.zarr
+    wildcards: dataset=t_cells, file_id=label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f, algorithm=leiden, resolution=1.1, level=1
+    resources: tmpdir=/tmp, partition=, qos=, mem_mb=, gpu=
+
+[Mon Feb 24 07:31:23 2025]
+rule clustering_cluster:
+    input: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/neighbors/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~None/resolution~None/level~1.zarr
+    output: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/resolutions/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~leiden/resolution~0.7/level~1.zarr
+    jobid: 188
+    reason: Missing output files: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/resolutions/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~leiden/resolution~0.7/level~1.zarr; Input files updated by another job: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/neighbors/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~None/resolution~None/level~1.zarr
+    wildcards: dataset=t_cells, file_id=label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f, algorithm=leiden, resolution=0.7, level=1
+    resources: tmpdir=/tmp, partition=, qos=, mem_mb=, gpu=
+
+[Mon Feb 24 07:31:23 2025]
+rule clustering_cluster:
+    input: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/neighbors/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~None/resolution~None/level~1.zarr
+    output: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/resolutions/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~leiden/resolution~0.9/level~1.zarr
+    jobid: 189
+    reason: Missing output files: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/resolutions/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~leiden/resolution~0.9/level~1.zarr; Input files updated by another job: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/neighbors/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~None/resolution~None/level~1.zarr
+    wildcards: dataset=t_cells, file_id=label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f, algorithm=leiden, resolution=0.9, level=1
+    resources: tmpdir=/tmp, partition=, qos=, mem_mb=, gpu=
+
+[Mon Feb 24 07:31:23 2025]
+rule clustering_cluster:
+    input: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/neighbors/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~None/resolution~None/level~1.zarr
+    output: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/resolutions/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~leiden/resolution~0.1/level~1.zarr
+    jobid: 185
+    reason: Missing output files: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/resolutions/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~leiden/resolution~0.1/level~1.zarr; Input files updated by another job: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/neighbors/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~None/resolution~None/level~1.zarr
+    wildcards: dataset=t_cells, file_id=label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f, algorithm=leiden, resolution=0.1, level=1
+    resources: tmpdir=/tmp, partition=, qos=, mem_mb=, gpu=
+
+python -c "from __future__ import print_function; import sys, json; print(json.dumps([sys.version_info.major, sys.version_info.minor]))"
+Activating conda environment: rapids_singlecell
+python -c "from __future__ import print_function; import sys, json; print(json.dumps([sys.version_info.major, sys.version_info.minor]))"
+Activating conda environment: rapids_singlecell
+python -c "from __future__ import print_function; import sys, json; print(json.dumps([sys.version_info.major, sys.version_info.minor]))"
+Activating conda environment: rapids_singlecell
+
+[Mon Feb 24 07:31:23 2025]
+rule clustering_cluster:
+    input: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/neighbors/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~None/resolution~None/level~1.zarr
+    output: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/resolutions/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~leiden/resolution~0.3/level~1.zarr
+    jobid: 186
+    reason: Missing output files: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/resolutions/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~leiden/resolution~0.3/level~1.zarr; Input files updated by another job: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/neighbors/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~None/resolution~None/level~1.zarr
+    wildcards: dataset=t_cells, file_id=label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f, algorithm=leiden, resolution=0.3, level=1
+    resources: tmpdir=/tmp, partition=, qos=, mem_mb=, gpu=
+
+python -c "from __future__ import print_function; import sys, json; print(json.dumps([sys.version_info.major, sys.version_info.minor]))"
+Activating conda environment: rapids_singlecell
+
+[Mon Feb 24 07:31:23 2025]
+rule clustering_cluster:
+    input: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/neighbors/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~None/resolution~None/level~1.zarr
+    output: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/resolutions/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~leiden/resolution~1.5/level~1.zarr
+    jobid: 192
+    reason: Missing output files: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/resolutions/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~leiden/resolution~1.5/level~1.zarr; Input files updated by another job: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/neighbors/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~None/resolution~None/level~1.zarr
+    wildcards: dataset=t_cells, file_id=label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f, algorithm=leiden, resolution=1.5, level=1
+    resources: tmpdir=/tmp, partition=, qos=, mem_mb=, gpu=
+
+python -c "from __future__ import print_function; import sys, json; print(json.dumps([sys.version_info.major, sys.version_info.minor]))"
+Activating conda environment: rapids_singlecell
+
+[Mon Feb 24 07:31:23 2025]
+rule clustering_compute_umap:
+    input: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/neighbors/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~None/resolution~None/level~1.zarr, /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/neighbors/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~None/resolution~None/level~1.zarr
+    output: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/umap/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f.zarr
+    jobid: 2
+    reason: Missing output files: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/umap/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f.zarr; Input files updated by another job: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/neighbors/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~None/resolution~None/level~1.zarr
+    wildcards: dataset=t_cells, file_id=label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f
+    resources: tmpdir=/tmp, partition=, qos=, mem_mb=, gpu=
+
+python -c "from __future__ import print_function; import sys, json; print(json.dumps([sys.version_info.major, sys.version_info.minor]))"
+Activating conda environment: rapids_singlecell
+
+[Mon Feb 24 07:31:23 2025]
+rule clustering_cluster:
+    input: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/neighbors/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~None/resolution~None/level~1.zarr
+    output: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/resolutions/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~leiden/resolution~1.3/level~1.zarr
+    jobid: 191
+    reason: Missing output files: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/resolutions/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~leiden/resolution~1.3/level~1.zarr; Input files updated by another job: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/neighbors/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~None/resolution~None/level~1.zarr
+    wildcards: dataset=t_cells, file_id=label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f, algorithm=leiden, resolution=1.3, level=1
+    resources: tmpdir=/tmp, partition=, qos=, mem_mb=, gpu=
+
+[Mon Feb 24 07:31:23 2025]
+rule clustering_cluster:
+    input: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/neighbors/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~None/resolution~None/level~1.zarr
+    output: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/resolutions/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~leiden/resolution~0.5/level~1.zarr
+    jobid: 187
+    reason: Missing output files: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/resolutions/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~leiden/resolution~0.5/level~1.zarr; Input files updated by another job: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/neighbors/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~None/resolution~None/level~1.zarr
+    wildcards: dataset=t_cells, file_id=label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f, algorithm=leiden, resolution=0.5, level=1
+    resources: tmpdir=/tmp, partition=, qos=, mem_mb=, gpu=
+
+python -c "from __future__ import print_function; import sys, json; print(json.dumps([sys.version_info.major, sys.version_info.minor]))"
+Activating conda environment: rapids_singlecell
+python -c "from __future__ import print_function; import sys, json; print(json.dumps([sys.version_info.major, sys.version_info.minor]))"
+Activating conda environment: rapids_singlecell
+python -c "from __future__ import print_function; import sys, json; print(json.dumps([sys.version_info.major, sys.version_info.minor]))"
+Activating conda environment: rapids_singlecell
+python /nfs/team205/ld21/repos/sc-atlassing-toolbox/.snakemake/scripts/tmpt2w9fjh1.clustering.py
+Activating conda environment: rapids_singlecell
+python /nfs/team205/ld21/repos/sc-atlassing-toolbox/.snakemake/scripts/tmpmu8tdt5r.clustering.py
+Activating conda environment: rapids_singlecell
+python /nfs/team205/ld21/repos/sc-atlassing-toolbox/.snakemake/scripts/tmpvj8_t0k_.clustering.py
+Activating conda environment: rapids_singlecell
+python /nfs/team205/ld21/repos/sc-atlassing-toolbox/.snakemake/scripts/tmp3070vyg5.clustering.py
+python /nfs/team205/ld21/repos/sc-atlassing-toolbox/.snakemake/scripts/tmp13hmwzsh.clustering.py
+python /nfs/team205/ld21/repos/sc-atlassing-toolbox/.snakemake/scripts/tmp3ex70y_e.clustering.py
+Activating conda environment: rapids_singlecell
+Activating conda environment: rapids_singlecell
+Activating conda environment: rapids_singlecell
+python /nfs/team205/ld21/repos/sc-atlassing-toolbox/.snakemake/scripts/tmplj82geob.clustering.py
+Activating conda environment: rapids_singlecell
+python /nfs/team205/ld21/repos/sc-atlassing-toolbox/.snakemake/scripts/tmpz6tfs0_y.clustering.py
+Activating conda environment: rapids_singlecell
+python /nfs/team205/ld21/repos/sc-atlassing-toolbox/.snakemake/scripts/tmpfsrig06d.umap.py
+Activating conda environment: rapids_singlecell
+INFO:root:Read anndata file /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/neighbors/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~None/resolution~None/level~1.zarr...
+INFO:root:Read anndata file /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/neighbors/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~None/resolution~None/level~1.zarr...
+INFO:root:Read anndata file /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/neighbors/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~None/resolution~None/level~1.zarr...
+INFO:root:Read anndata file /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/neighbors/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~None/resolution~None/level~1.zarr...
+INFO:root:Read anndata file /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/neighbors/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~None/resolution~None/level~1.zarr...
+INFO:root:Read anndata file /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/neighbors/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~None/resolution~None/level~1.zarr...
+INFO:root:Read anndata file /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/neighbors/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~None/resolution~None/level~1.zarr...
+INFO:root:Read anndata file /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/neighbors/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~None/resolution~None/level~1.zarr...
+INFO:root:Using rapids_singlecell...
+INFO:root:Read /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/neighbors/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~None/resolution~None/level~1.zarr...
+INFO:root:Read representation file /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/neighbors/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~None/resolution~None/level~1.zarr for use_rep="X_emb"...
+INFO:root:Select neighbors for "neighbors"...
+INFO:root:Compute UMAP...
+INFO:root:Select neighbors for "neighbors"...
+INFO:root:Select neighbors for "neighbors"...
+INFO:root:Select neighbors for "neighbors"...
+INFO:root:Select neighbors for "neighbors"...
+INFO:root:Select neighbors for "neighbors"...
+INFO:root:Select neighbors for "neighbors"...
+INFO:root:Select neighbors for "neighbors"...
+INFO:root:leiden clustering with {'key_added': 'leiden_0.7_1', 'resolution': 0.7} for 3783527 cells...
+INFO:root:leiden clustering with {'key_added': 'leiden_0.9_1', 'resolution': 0.9} for 3783527 cells...
+INFO:root:leiden clustering with {'key_added': 'leiden_1.5_1', 'resolution': 1.5} for 3783527 cells...
+INFO:root:leiden clustering with {'key_added': 'leiden_0.1_1', 'resolution': 0.1} for 3783527 cells...
+INFO:root:leiden clustering with {'key_added': 'leiden_0.5_1', 'resolution': 0.5} for 3783527 cells...
+INFO:root:leiden clustering with {'key_added': 'leiden_1.1_1', 'resolution': 1.1} for 3783527 cells...
+INFO:root:leiden clustering with {'key_added': 'leiden_1.3_1', 'resolution': 1.3} for 3783527 cells...
+INFO:root:leiden clustering with {'key_added': 'leiden_0.3_1', 'resolution': 0.3} for 3783527 cells...
+INFO:root:Write to /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/umap/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f.zarr...
+Traceback (most recent call last):
+  File "/nfs/team205/ld21/repos/sc-atlassing-toolbox/.snakemake/scripts/tmp13hmwzsh.clustering.py", line 145, in <module>
+    adata = apply_clustering(
+            ^^^^^^^^^^^^^^^^^
+  File "/nfs/team205/ld21/repos/sc-atlassing-toolbox/.snakemake/scripts/tmp13hmwzsh.clustering.py", line 88, in apply_clustering
+    cluster_func(adata, **kwargs)
+  File "/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/rapids_singlecell/lib/python3.11/site-packages/rapids_singlecell/tools/_clustering.py", line 124, in leiden
+    g = _create_graph(adjacency, use_weights)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/rapids_singlecell/lib/python3.11/site-packages/rapids_singlecell/tools/_clustering.py", line 30, in _create_graph
+    g.from_cudf_edgelist(
+  File "/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/rapids_singlecell/lib/python3.11/site-packages/cugraph/structure/graph_classes.py", line 193, in from_cudf_edgelist
+    self._Impl._simpleGraphImpl__from_edgelist(
+  File "/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/rapids_singlecell/lib/python3.11/site-packages/cugraph/structure/graph_implementation/simpleGraph.py", line 265, in __from_edgelist
+    source_col, dest_col, value_col = symmetrize(
+                                      ^^^^^^^^^^^
+  File "/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/rapids_singlecell/lib/python3.11/site-packages/cugraph/structure/symmetrize.py", line 279, in symmetrize
+    output_df = symmetrize_df(
+                ^^^^^^^^^^^^^^
+  File "/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/rapids_singlecell/lib/python3.11/site-packages/cugraph/structure/symmetrize.py", line 99, in symmetrize_df
+    result = result.groupby(by=[*vertex_col_name], as_index=False).min()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/rapids_singlecell/lib/python3.11/site-packages/cudf/core/mixins/mixin_factory.py", line 11, in wrapper
+    return method(self, *args1, *args2, **kwargs1, **kwargs2)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/rapids_singlecell/lib/python3.11/site-packages/cudf/core/groupby/groupby.py", line 759, in _reduce
+    return self.agg(op)
+           ^^^^^^^^^^^^
+  File "/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/rapids_singlecell/lib/python3.11/site-packages/nvtx/nvtx.py", line 116, in inner
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/rapids_singlecell/lib/python3.11/site-packages/cudf/core/groupby/groupby.py", line 631, in agg
+    ) = self._groupby.aggregate(columns, normalized_aggs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "groupby.pyx", line 225, in cudf._lib.groupby.GroupBy.aggregate
+  File "groupby.pyx", line 125, in cudf._lib.pylibcudf.groupby.GroupBy.aggregate
+  File "groupby.pyx", line 154, in cudf._lib.pylibcudf.groupby.GroupBy.aggregate
+MemoryError: std::bad_alloc: out_of_memory: CUDA error at: /lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/rapids_singlecell/include/rmm/mr/device/cuda_memory_resource.hpp
+Traceback (most recent call last):
+  File "/nfs/team205/ld21/repos/sc-atlassing-toolbox/.snakemake/scripts/tmplj82geob.clustering.py", line 145, in <module>
+    adata = apply_clustering(
+            ^^^^^^^^^^^^^^^^^
+  File "/nfs/team205/ld21/repos/sc-atlassing-toolbox/.snakemake/scripts/tmplj82geob.clustering.py", line 88, in apply_clustering
+    cluster_func(adata, **kwargs)
+  File "/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/rapids_singlecell/lib/python3.11/site-packages/rapids_singlecell/tools/_clustering.py", line 124, in leiden
+    g = _create_graph(adjacency, use_weights)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/rapids_singlecell/lib/python3.11/site-packages/rapids_singlecell/tools/_clustering.py", line 30, in _create_graph
+    g.from_cudf_edgelist(
+  File "/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/rapids_singlecell/lib/python3.11/site-packages/cugraph/structure/graph_classes.py", line 193, in from_cudf_edgelist
+    self._Impl._simpleGraphImpl__from_edgelist(
+  File "/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/rapids_singlecell/lib/python3.11/site-packages/cugraph/structure/graph_implementation/simpleGraph.py", line 265, in __from_edgelist
+    source_col, dest_col, value_col = symmetrize(
+                                      ^^^^^^^^^^^
+  File "/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/rapids_singlecell/lib/python3.11/site-packages/cugraph/structure/symmetrize.py", line 279, in symmetrize
+    output_df = symmetrize_df(
+                ^^^^^^^^^^^^^^
+  File "/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/rapids_singlecell/lib/python3.11/site-packages/cugraph/structure/symmetrize.py", line 99, in symmetrize_df
+    result = result.groupby(by=[*vertex_col_name], as_index=False).min()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/rapids_singlecell/lib/python3.11/site-packages/cudf/core/mixins/mixin_factory.py", line 11, in wrapper
+    return method(self, *args1, *args2, **kwargs1, **kwargs2)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/rapids_singlecell/lib/python3.11/site-packages/cudf/core/groupby/groupby.py", line 759, in _reduce
+    return self.agg(op)
+           ^^^^^^^^^^^^
+  File "/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/rapids_singlecell/lib/python3.11/site-packages/nvtx/nvtx.py", line 116, in inner
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/rapids_singlecell/lib/python3.11/site-packages/cudf/core/groupby/groupby.py", line 631, in agg
+    ) = self._groupby.aggregate(columns, normalized_aggs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "groupby.pyx", line 225, in cudf._lib.groupby.GroupBy.aggregate
+  File "groupby.pyx", line 125, in cudf._lib.pylibcudf.groupby.GroupBy.aggregate
+  File "groupby.pyx", line 154, in cudf._lib.pylibcudf.groupby.GroupBy.aggregate
+MemoryError: std::bad_alloc: out_of_memory: CUDA error at: /lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/rapids_singlecell/include/rmm/mr/device/cuda_memory_resource.hpp
+Traceback (most recent call last):
+  File "/nfs/team205/ld21/repos/sc-atlassing-toolbox/.snakemake/scripts/tmpz6tfs0_y.clustering.py", line 145, in <module>
+    adata = apply_clustering(
+            ^^^^^^^^^^^^^^^^^
+  File "/nfs/team205/ld21/repos/sc-atlassing-toolbox/.snakemake/scripts/tmpz6tfs0_y.clustering.py", line 88, in apply_clustering
+    cluster_func(adata, **kwargs)
+  File "/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/rapids_singlecell/lib/python3.11/site-packages/rapids_singlecell/tools/_clustering.py", line 124, in leiden
+    g = _create_graph(adjacency, use_weights)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/rapids_singlecell/lib/python3.11/site-packages/rapids_singlecell/tools/_clustering.py", line 30, in _create_graph
+    g.from_cudf_edgelist(
+  File "/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/rapids_singlecell/lib/python3.11/site-packages/cugraph/structure/graph_classes.py", line 193, in from_cudf_edgelist
+    self._Impl._simpleGraphImpl__from_edgelist(
+  File "/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/rapids_singlecell/lib/python3.11/site-packages/cugraph/structure/graph_implementation/simpleGraph.py", line 265, in __from_edgelist
+    source_col, dest_col, value_col = symmetrize(
+                                      ^^^^^^^^^^^
+  File "/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/rapids_singlecell/lib/python3.11/site-packages/cugraph/structure/symmetrize.py", line 279, in symmetrize
+    output_df = symmetrize_df(
+                ^^^^^^^^^^^^^^
+  File "/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/rapids_singlecell/lib/python3.11/site-packages/cugraph/structure/symmetrize.py", line 99, in symmetrize_df
+    result = result.groupby(by=[*vertex_col_name], as_index=False).min()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/rapids_singlecell/lib/python3.11/site-packages/cudf/core/mixins/mixin_factory.py", line 11, in wrapper
+    return method(self, *args1, *args2, **kwargs1, **kwargs2)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/rapids_singlecell/lib/python3.11/site-packages/cudf/core/groupby/groupby.py", line 759, in _reduce
+    return self.agg(op)
+           ^^^^^^^^^^^^
+  File "/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/rapids_singlecell/lib/python3.11/site-packages/nvtx/nvtx.py", line 116, in inner
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/rapids_singlecell/lib/python3.11/site-packages/cudf/core/groupby/groupby.py", line 631, in agg
+    ) = self._groupby.aggregate(columns, normalized_aggs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "groupby.pyx", line 225, in cudf._lib.groupby.GroupBy.aggregate
+  File "groupby.pyx", line 125, in cudf._lib.pylibcudf.groupby.GroupBy.aggregate
+  File "groupby.pyx", line 154, in cudf._lib.pylibcudf.groupby.GroupBy.aggregate
+MemoryError: std::bad_alloc: out_of_memory: CUDA error at: /lustre/scratch126/cellgen/team205/ld21/miniforge3/envs/rapids_singlecell/include/rmm/mr/device/cuda_memory_resource.hpp
+[Mon Feb 24 07:32:34 2025]
+[Mon Feb 24 07:32:34 2025]
+Error in rule clustering_cluster:
+    jobid: 187
+    input: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/neighbors/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~None/resolution~None/level~1.zarr
+    output: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/resolutions/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~leiden/resolution~0.5/level~1.zarr
+    conda-env: rapids_singlecell
+
+Error in rule clustering_cluster:
+    jobid: 188
+    input: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/neighbors/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~None/resolution~None/level~1.zarr
+    output: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/resolutions/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~leiden/resolution~0.7/level~1.zarr
+    conda-env: rapids_singlecell
+
+[Mon Feb 24 07:32:34 2025]
+Error in rule clustering_cluster:
+    jobid: 191
+    input: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/neighbors/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~None/resolution~None/level~1.zarr
+    output: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/resolutions/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~leiden/resolution~1.3/level~1.zarr
+    conda-env: rapids_singlecell
+
+[Mon Feb 24 07:33:21 2025]
+Finished job 2.
+3 of 16 steps (19%) done
+INFO:numba.cuda.cudadrv.driver:init
+INFO:numba.cuda.cudadrv.driver:init
+INFO:root:Cluster leiden_0.9_1 has 160959 custers, which is more than 45. Falling back to scanpy implementation...
+INFO:root:Cluster leiden_0.1_1 has 491903 custers, which is more than 5. Falling back to scanpy implementation...
+INFO:numba.cuda.cudadrv.driver:init
+INFO:root:Write leiden_0.3_1 to /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/resolutions/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~leiden/resolution~0.3/level~1.zarr...
+INFO:numba.cuda.cudadrv.driver:init
+INFO:numba.cuda.cudadrv.driver:init
+INFO:root:Write leiden_1.1_1 to /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/resolutions/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~leiden/resolution~1.1/level~1.zarr...
+INFO:root:Cluster leiden_1.5_1 has 160986 custers, which is more than 75. Falling back to scanpy implementation...
+[Mon Feb 24 07:33:53 2025]
+Finished job 186.
+4 of 16 steps (25%) done
+[Mon Feb 24 07:33:55 2025]
+Finished job 190.
+5 of 16 steps (31%) done
+INFO:root:Write leiden_0.9_1 to /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/resolutions/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~leiden/resolution~0.9/level~1.zarr...
+[Mon Feb 24 07:42:17 2025]
+Finished job 189.
+6 of 16 steps (38%) done
+INFO:root:Write leiden_1.5_1 to /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/resolutions/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~leiden/resolution~1.5/level~1.zarr...
+[Mon Feb 24 07:42:27 2025]
+Finished job 192.
+7 of 16 steps (44%) done
+INFO:root:Write leiden_0.1_1 to /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/resolutions/dataset~t_cells/file_id~label_harmonization:integration:merge:t_cells--integration_method=scvi--integration_batch=dataset_id--integration_label=None--integration_var_mask=None--integration_output_type=embed--integration_hyperparams=e774194f5f/algorithm~leiden/resolution~0.1/level~1.zarr...
+[Mon Feb 24 07:42:54 2025]
+Finished job 185.
+8 of 16 steps (50%) done
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2025-02-23T224526.493796.snakemake.log

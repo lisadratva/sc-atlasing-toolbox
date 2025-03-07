@@ -64,11 +64,12 @@ module load_data:
 
 include: 'rules/load_data.smk'
 include: 'rules/dcp_metadata.smk'
-include: 'rules/filter.smk'
+include: 'rules/filter.smk' # don't exclude any cells for now
 include: 'rules/merge.smk'
 
 rule all:
     input:
+        # expand(rules.load_data_harmonize_metadata_all)
         expand(rules.load_data_merge_organ.output,**get_wildcards(dataset_df,['organ'])),
         # expand(rules.load_data_merge_organ_filter.output,**get_wildcards(dataset_df,['organ'])),
     default_target: True

@@ -1,0 +1,307 @@
+use_gpu: true
+
+DATASETS:
+  t_cells: # start with objects that had doublets computed on entire dataset
+    input:
+      filter:
+        # Coates_NALT: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/Coates_NALT.zarr
+        # GSE173231: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/GSE173231.zarr
+        # GSE180268: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/GSE180268.zarr
+        BEAM: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/BEAM.zarr
+        COMBAT_2022: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/COMBAT_2022.zarr
+        Yoshida_2021: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/Yoshida_2021.zarr
+        GSE180268: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/GSE180268.zarr
+        Lindeboom_2024_NP: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/Lindeboom_2024_NP.zarr
+        GSE182536: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/GSE182536.zarr
+        GSE187515: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/GSE187515.zarr
+        Liu_2021: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/Liu_2021.zarr
+        GSE217930: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/GSE217930.zarr
+        Waradon_Dengue: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/Waradon_Dengue.zarr
+        Lindeboom_2024_PBMCs: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/Lindeboom_2024_PBMCs.zarr
+        GSE182159_Liver: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/GSE182159_Liver.zarr
+        GSE182159_PBMCs: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/GSE182159_PBMCs.zarr
+        GSE173231: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/GSE173231.zarr
+        Reyes_2020: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/Reyes_2020.zarr
+        Stephenson_2021: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/Stephenson_2021.zarr
+        GSE158769: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/GSE158769.zarr
+        Hatje_2024_PBMCs: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/Hatje_2024_PBMCs.zarr
+        Hatje_2024_Liver: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/Hatje_2024_Liver.zarr
+        Hatje_2024_SmartSeq2: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/Hatje_2024_SmartSeq2.zarr
+        Ren_2021_10X_3_BALF: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/Ren_2021_10X_3_BALF.zarr
+        Ren_2021_10X_5_BALF: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/Ren_2021_10X_5_BALF.zarr
+        Ren_2021_10X_3_PBMCs: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/Ren_2021_10X_3_PBMCs.zarr
+        Ren_2021_10X_5_PBMCs: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/Ren_2021_10X_5_PBMCs.zarr
+        Ren_2021_10X_3_Sputum: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/Ren_2021_10X_3_Sputum.zarr
+        HRA000190: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/HRA000190.zarr
+        ESKD_2024: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/ESKD_2024.zarr
+        GSE234241_PBMCs: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/GSE234241_PBMCs.zarr
+        GSE234241_Liver: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/GSE234241_Liver.zarr
+        GSE259231_10X_5: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/GSE259231_10X_5.zarr
+        GSE259231_mCEL_seq2_HBV: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/GSE259231_mCEL_seq2_HBV.zarr
+        GSE259231_mCEL_seq2_HCV: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/GSE259231_mCEL_seq2_HCV.zarr
+        GSE162097_PBMCs: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/GSE162097_PBMCs.zarr
+        GSE162097_TDL: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/GSE162097_TDL.zarr
+        GSE287808_NALT: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/GSE287808_NALT.zarr
+        # test: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/input_data/test.zarr
+      preprocessing: filter
+      merge: preprocessing
+      integration: merge
+      metrics: integration
+      label_harmonization: integration
+      clustering: label_harmonization
+
+    merge:
+      merge_strategy: outer
+    integration:
+      umap_colors:
+        - batch
+        - pool
+        - study
+        - dataset_id
+        - qc_status
+        # - scrublet_score # these take forever to plot
+        # - doubletdetection_score # these take forever to plot
+        # - n_genes
+        # - n_counts
+        # - percent_mito
+        - Lindeboom_broad
+        - Cross_tissue_broad
+        - Compartment_prediction
+        - pathogen
+        - tissue
+        - infection_stage
+        - infection_status
+        - modalities
+      raw_counts: layers/raw_counts
+      norm_counts: layers/normcounts
+      batch: 
+        - dataset_id # study of origin
+      label:
+        - Lindeboom_broad
+      methods:
+        # unintegrated:
+        # scanorama:
+          # batch_size: 100
+        # harmonypy:
+        # bbknn:
+        scvi:
+          max_epochs:
+            - 40
+          early_stopping: true
+          categorical_covariate_keys: [[dataset_id, modalities]] # it will use these together (not for independent models)
+          n_layers:
+            - 2
+            # - 3
+          n_latent:
+            # - 10
+            # - 20
+            - 30          
+    label_harmonization:
+      # mapping:  # mapping setup
+        # file:  test/input/mapping.tsv  # TSV file with cell label mapping
+      dataset_key: study
+      author_label_key: original_annotation
+      marker_genes: t_cell_markers
+      cellhint:
+        use_rep: X_emb # instead of X_pca ?
+        use_pct: false
+    exploration:
+      marker_genes: T cells
+      sample: sample
+      donor: donor
+      summary_columns:
+        - sex
+        - pathogen
+        - infection_status
+        - infection_stage
+        - age
+        - original_annotation
+    metrics:
+      unintegrated: layers/normcounts
+      corrected: X
+      batch: dataset_id
+      label: Lindeboom_broad
+      methods:
+        - pcr
+        - nmi
+        - graph_connectivity
+        - clisi
+        - ilisi
+        # - kbet
+        - ari
+        - ari_leiden_y
+        - asw_batch
+    preprocessing:
+      raw_counts: layers/counts
+      normalize:
+        target_sum: 1e4
+      pca:
+        n_comps: 50
+      highly_variable_genes:
+        n_top_genes: 10000
+        batch_key: dataset_id # does this make sense?
+      extra_hvgs:
+        remove_genes:
+          - XIST
+          # other sex determining genes
+          - https://raw.githubusercontent.com/prabhakarlab/AIDA_Phase1/master/01_QualityControl/list_chrY_nonPAR_genes.txt
+          # immunoglobulin genes
+          - ^IGK.*
+          - ^IGL.*
+          - ^IGHV.*
+          - ^IGHD.*
+          - ^IGHJ.*
+          - ^TRAV.*
+          - ^TRAJ.*
+          - ^TRBV.*
+          - ^TRBD.*
+          - ^TRBJ.*
+          # low quality genes
+          - ^RP.*
+          - ^MT-.*
+        extra_genes:
+          - configs/integration/custom_genes_include.txt
+          - /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/miscellaneous/t_cell_object_var_names.csv # does this even work?
+          - IGHA1-2
+          - IGHD
+          - IGHE
+          - IGHG1-4
+          - IGHM
+          - TRAC
+          - ID3
+          - KIT
+          - IGSF2
+          - KIR2DL1
+          - KIR2DL2
+          - KIR2DL3
+          - KIR2DS1
+          - KIR2DS2
+          - KIR3DL2
+          - KIR3DS1
+          - IL17
+          - TRAV1-2
+          - TRGV9
+          - TRDV2
+          - TRDV1
+          - TRDV3
+          - TRGC1
+          - TRGC2
+          - TRDC
+          - SIGLEC6
+          - AXL
+          - CLEC9A
+          - CLEC10A
+          - CD1C
+          - CD34
+          - PF4
+          - HBA1
+          - HBA2
+          - LILRA4
+          - TNFRSF17
+          - CD19
+          - EPCAM
+          - COL1A1
+          - FSP1
+          - PECAM1
+          - VWF
+          - MPO
+          - TPSB2
+          - ITGA2B
+          - CD41
+          - CEACAM8
+          - ELANE
+      assemble:
+        - raw_counts
+        - normalize
+        - highly_variable_genes
+        - extra_hvgs
+      colors:
+        - batch
+        - pool
+        - study
+        - dataset_id
+        - qc_status
+        # - scrublet_score # take way too long
+        # - doubletdetection_score # take way too long
+        # - n_genes
+        # - n_counts
+        # - percent_mito
+        - Lindeboom_broad 
+        - Cross_tissue_broad
+        - Compartment_prediction
+        - pathogen
+        - infection_stage
+        - infection_status
+        - modalities
+        - tissue
+    clustering:
+      # neighbors_key: neighbors
+      recompute_umap: true
+      recompute_neighbors: true
+      neighbors:
+        n_neighbors: 30 # why so many?
+        use_rep: X_emb # somehow this isn't found
+      algorithm:
+        - leiden
+      resolutions:
+        - 0.1
+        - 0.3
+        - 0.5
+        - 0.7
+        - 0.9
+        - 1.1
+        - 1.3
+        - 1.5
+      umap_colors:
+        - dataset_id
+        - Lindeboom_broad
+        - tissue
+        - pathogen
+        # cellhint outputs
+        - group
+        - reannotation_index
+    filter:
+      subset: true ## whether to subset the file according to the filters, is False by default
+      remove_by_column:
+        barcode:
+          - /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/miscellaneous/non_t_cells_barcodes.csv
+      var_names_keep:
+        # all genes plus a couple of T cell markers
+        - /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/miscellaneous/t_cell_object_var_names.csv
+
+MARKER_GENES:
+  t_cell_markers:
+    - PTPRC
+    - CD3D
+    - CD3E
+    - TRAC
+    - CD4
+    - ITGB1
+    - GATA3
+    - CD8A
+    - CD8B
+    - TCF7
+    - LEF1
+    - SELL
+    - CCR7
+    - CXCR3
+    - GZMA
+    - PRF1
+    - GNLY1
+    - TIGIT
+    - LAG3
+    - FAS
+    - CD38
+    - NFKB1
+    - JUNB
+    - MKI67
+    - IFI44L
+    - MX1
+    - ITGAE
+    - RUNX3
+    - TRAV1-2
+    - FOXP3
+    - CTLA4
+    - ICOS
+    - TRGV9
+    - TRDV2

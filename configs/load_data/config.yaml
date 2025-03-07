@@ -1,15 +1,29 @@
-dataset_meta: configs/load_data/datasets.tsv
-schema_file: configs/load_data/schema_mapping.tsv
-dcp_metadata: configs/load_data/dcp_metadata.tsv
+# output_dir: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out
+# images: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/images
+# use_gpu: false # for now
 
-filter_per_organ:
-  blood:
-    cells_per_sample:
-      min: None
-      max: None
-    mito_pct: 30
-    remove_by_colum:
-      disease:
-        - respiratory system disorder
-        - influenza
-        - systemic lupus erythematosus
+# dataset_meta: datasets_pan_infection_3d.tsv
+# schema_file: schema_mapping_pan_infection.tsv
+# # dcp_metadata: datasets_pan_infection_3d.tsv
+
+# env_mode: local
+
+# filter_per_organ:
+#   blood:
+#     cells_per_sample:
+#       min: None
+#       max: None
+
+# print('================== INSIDE THE load_data/config.yaml =================')
+
+# filter_per_organ:
+#   blood:
+#     cells_per_sample:
+#       min: None
+#       max: None
+#     mito_pct: 30
+#     remove_by_colum:
+#       disease:
+#         - respiratory system disorder
+#         - influenza
+#         - systemic lupus erythematosus

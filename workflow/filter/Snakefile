@@ -8,7 +8,7 @@ from utils.environments import get_env
 mcfg = ModuleConfig(
     module_name='filter',
     config=config,
-    config_params=['dask', 'backed', 'subset',  'remove_by_column'],  # , 'keep_by_colum'
+    config_params=['dask', 'backed', 'subset',  'remove_by_column', 'var_names_keep'],
     dtypes={
         'dask': bool,
         'backed': bool,
@@ -38,6 +38,7 @@ use rule filter from filtering as filter with:
         zarr=directory(mcfg.out_dir / f'{params.wildcard_pattern}.zarr'),
     params:
         remove_by_column=lambda wildcards: mcfg.get_from_parameters(wildcards, 'remove_by_column', default={}),
+        var_names_keep=lambda wildcards: mcfg.get_from_parameters(wildcards, 'var_names_keep', default={}),
         backed=lambda wildcards: mcfg.get_from_parameters(wildcards, 'backed'),
         dask=lambda wildcards: mcfg.get_from_parameters(wildcards, 'dask'),
         subset=lambda wildcards: mcfg.get_from_parameters(wildcards, 'subset'),

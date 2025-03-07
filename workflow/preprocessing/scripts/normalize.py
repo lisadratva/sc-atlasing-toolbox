@@ -48,10 +48,13 @@ if adata.n_obs == 0:
     adata.write_zarr(output_file)
     exit(0)
 
-if input_file.endswith('.h5ad'):
-    logging.info('Copy counts to layers...')
-    adata.layers['counts'] = adata.X
-    adata.raw = adata
+adata.layers['raw_counts'] = adata.X.copy()
+
+
+# if input_file.endswith('.h5ad'):
+#     logging.info('Copy counts to layers...')
+#     adata.layers['counts'] = adata.X
+#     adata.raw = adata
 
 if isinstance(adata.X, da.Array):
     logging.info('Convert dask chunks to sparse chunks...')
@@ -94,10 +97,10 @@ write_zarr_linked(
     adata,
     input_file,
     output_file,
-    files_to_keep=['uns', 'layers/normcounts'],
+    files_to_keep=['uns', 'layers/normcounts', 'layers/raw_counts'],
     slot_map={
         'X': 'layers/normcounts',
-        'layers/counts': layer,
+        'layers/raw_counts': 'layers/raw_counts',
         'raw/X': layer,
         'raw/var': 'var',
     },

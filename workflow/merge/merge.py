@@ -18,11 +18,15 @@ def read_adata(file, backed=False, dask=False):
         file,
         backed=backed,
         dask=dask,
-        X='X',
+        layers = 'layers',
         obs='obs',
         var='var',
         uns='uns',
     )
+    print(adata)
+    # adata.X = adata.layers['raw_counts_keep'].copy() # put raw counts back in X
+    # print('=============== RAW COUNTS in merge.py:', adata.X.max())
+    # del adata.layers
     return adata
 
 
@@ -39,7 +43,7 @@ if len(files) == 1:
     link_zarr(in_dir=files[0], out_dir=out_file)
     exit(0)
 
-adatas = [read_anndata(file, obs='obs', var='var', uns='uns') for file in files]
+adatas = [read_anndata(file, obs='obs', var='var', uns='uns', layers='layers') for file in files]
 
 # subset to non-empty datasets
 files = [file for file, adata in zip(files, adatas) if adata.n_obs > 0]
@@ -87,12 +91,15 @@ else:
     logging.info(f'Read first file {files[0]}...')
     adata = read_adata(files[0], backed=backed, dask=dask)
     logging.info(adata.__str__())
+    for col in adata.obs.columns:
+        adata.obs[col] = adata.obs[col].astype(str)
 
     for file in files[1:]:
         logging.info(f'Read {file}...')
         _adata = read_adata(file, backed=backed, dask=dask)
         logging.info(f'{file}:\n{_adata}')
-        
+        for col in _adata.obs.columns:
+            _adata.obs[col] = _adata.obs[col].astype(str)
         # merge adata
         adata = sc.concat([adata, _adata], join=merge_strategy)
         logging.info(f'after merge:\n{adata}')

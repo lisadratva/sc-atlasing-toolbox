@@ -12,7 +12,7 @@ input_file = snakemake.input[0]
 output_file = snakemake.output[0]
 gauss_threshold = snakemake.params.get('gauss_threshold', 0.1)
 
-adata = read_anndata(input_file, X='X', obs='obs', var='var')
+adata = read_anndata(input_file, X='X', obs='obs', var='var', layers='layers')
 
 if adata.n_obs == 0:
     logging.info(f'Write empty zarr file to {output_file}...')
@@ -46,9 +46,10 @@ logging.info(f"\n{adata.uns['scautoqc_ranges']}")
 # adata.obs['qc_cell'] = np.where(adata.obs['consensus_passed_qc'], 'pass', 'fail')
 
 logging.info(f'Write zarr file to {output_file}...')
+adata.layers['raw_counts_keep'] = adata.layers['counts'].copy()
 write_zarr_linked(
     adata,
     input_file,
     output_file,
-    files_to_keep=['obs', 'uns']
+    files_to_keep=['obs', 'uns', 'layers']
 )

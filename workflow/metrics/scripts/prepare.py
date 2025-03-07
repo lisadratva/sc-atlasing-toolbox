@@ -13,7 +13,7 @@ from utils.processing import compute_neighbors, _filter_genes
 
 
 def compute_pca(adata, matrix):
-    X_pca, _, variance_ratio, variance = sc.tl.pca(matrix, return_info=True)
+    X_pca, _, variance_ratio, variance = sc.pp.pca(matrix, return_info=True)
     adata.obsm['X_pca'] = X_pca
     adata.uns['pca'] = {
         'variance_ratio': variance_ratio,

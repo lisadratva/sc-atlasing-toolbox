@@ -41,6 +41,11 @@ adata = read_anndata(
     backed=True,
 )
 print(adata, flush=True)
+
+# manually fix problem with these two datasets
+if adata.obs.study.isin(['GSE180268','GSE173231']).any():
+    adata.obs.loc[adata.obs.study.isin(['GSE180268','GSE173231']), 'original_annotation'] = 'nan'
+
 obs = adata.obs
 
 # subsample cells

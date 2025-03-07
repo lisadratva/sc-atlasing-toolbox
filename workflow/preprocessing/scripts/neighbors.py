@@ -17,7 +17,7 @@ extra_uns = snakemake.params.get('extra_uns', {})
 files_to_overwrite = ['obsp', 'uns']
 
 logging.info(f'Read {input_file}...')
-adata = read_anndata(input_file, obs='obs', obsm='obsm', uns='uns', var='var')
+adata = read_anndata(input_file, obs='obs', obsm='obsm', uns='uns', var='var', layers='layers')
 
 if adata.n_obs == 0:
     logging.info('No data, write empty file...')
@@ -77,6 +77,10 @@ adata.uns |= extra_uns
 
 logging.info(f'Write to {output_file}...')
 logging.info(adata.__str__())
+
+# adata.X = adata.layers['count'].copy()
+# print('=============== NEW RAW COUNTS:', adata.X.max())
+
 write_zarr_linked(
     adata,
     input_file,

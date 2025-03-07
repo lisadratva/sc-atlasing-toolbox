@@ -13,8 +13,8 @@ min_version("6.0")
 container: "docker://condaforge/mambaforge:latest"
 
 configfile: "configs/outputs.yaml"
-configfile: "configs/load_data/config.yaml"
-configfile: "configs/exploration/config.yaml"
+# configfile: "configs/load_data/config.yaml"
+# configfile: "configs/exploration/config.yaml"
 
 # params = pd.read_table('configs/modules.tsv',comment='#')
 # params['submodules'] = params['submodules'].str.split(',')
@@ -222,7 +222,7 @@ def get_modules_from_config(config):
     return list(modules)
 
 modules = get_modules_from_config(config)
-
+print('================= modules ==============', modules)
 rule dependency_graph:
     input:
         expand(

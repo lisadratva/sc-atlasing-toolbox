@@ -36,6 +36,10 @@ except Exception as e:
     adata = sc.read_loom(in_file, sparse=True)
 logging.info(adata)
 
+if 'original_annotation' not in adata.obs.columns:
+    adata.obs['original_annotation'] = adata.obs['Lindeboom_detailed']
+
+
 # remove all unneeded uns entries
 for key in list(adata.uns.keys()):
     if key in ['schema_version', 'batch_condition']:
@@ -122,7 +126,8 @@ if adata.obs['cell_type'].nunique() == 1:
     adata.obs['cell_type'] = adata.obs['author_annotation']
 
 # save barcodes in separate column
-adata.obs['barcode'] = adata.obs_names
+if 'barcode' not in adata.obs.columns:
+    adata.obs['barcode'] = adata.obs_names
 adata.obs_names = adata.uns['dataset'] + '-' + adata.obs.reset_index(drop=True).index.astype(str)
 
 # schemas translation

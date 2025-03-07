@@ -88,6 +88,10 @@ logging.info('Compute UMAP...')
 sc.tl.umap(adata, **params)
 
 logging.info(f'Write to {output_file}...')
-del adata.X
+try:
+    adata.X = adata.layers['count'].copy()
+    print('=============== NEW RAW COUNTS:', adata.X.max())
+except:
+    pass
 adata.write_zarr(output_file)
 link_zarr_partial(input_file, output_file, files_to_keep=['obsm', 'uns'])

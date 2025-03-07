@@ -15,6 +15,6 @@ dependencies:
   - hdf5=1.14.2
   - dask
   - sparse
-  - pip
-  - pip:
-    - git+https://github.com/lueckenlab/patient_representation.git@main
+  # - pip
+  # - pip:
+    # - git+https://github.com/lueckenlab/patient_representation.git@main # repo is private

@@ -1,17 +1,20 @@
 # Note: relative paths must be relative to the project root, not the directory of the config file.
 
-output_dir: data/out
-images: images
-use_gpu: true
+output_dir: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out
+images: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/images
+# use_gpu: false # this doesn't impact anything... it will use the gpu as long as gpu is present
 
 output_map:
-  merge: data/out/merge/dataset~{dataset}.zarr
-  # qc: data/out/qc/dataset~{dataset}/file_id~{file_id}.zarr
-  clustering: data/out/clustering/dataset~{dataset}/file_id~{file_id}.zarr
-  split_data: data/out/split_data/dataset~{dataset}/file_id~{file_id}/key~{key}/value~{value}.zarr
-  relabel: data/out/relabel/dataset~{dataset}/file_id~{file_id}.zarr
-  pca: data/out/preprocessing/dataset~{dataset}/file_id~{file_id}/pca.zarr
-  neighbors: data/out/preprocessing/dataset~{dataset}/file_id~{file_id}/neighbors.zarr
-  preprocessing: data/out/preprocessing/dataset~{dataset}/file_id~{file_id}/preprocessed.zarr
-  # integration: data/out/integration/dataset~{dataset}/file_id~{file_id}/batch~{batch}/method~{method}--hyperparams~{hyperparams}--label~{label}--output_type~{output_type}.zarr
-  metrics: data/out/metrics/results/per_dataset/{dataset}_metrics.tsv
+  merge: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/merge/dataset~{dataset}.zarr
+  qc: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/qc/dataset~{dataset}/file_id~{file_id}.zarr
+  filter: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/filter/dataset~{dataset}/file_id~{file_id}.zarr
+  clustering: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/clustering/dataset~{dataset}/file_id~{file_id}.zarr
+  split_data: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/split_data/dataset~{dataset}/file_id~{file_id}/key~{key}/value~{value}.zarr
+  relabel: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/relabel/dataset~{dataset}/file_id~{file_id}.zarr
+  pca: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/preprocessing/dataset~{dataset}/file_id~{file_id}/pca.zarr
+  neighbors: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/preprocessing/dataset~{dataset}/file_id~{file_id}/neighbors.zarr
+  preprocessing: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/preprocessing/dataset~{dataset}/file_id~{file_id}/preprocessed.zarr
+  # integration: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/integration/dataset~{dataset}/file_id~{file_id}/batch~{batch}/method~{method}--hyperparams~{hyperparams}--label~{label}--output_type~{output_type}.zarr
+  metrics: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/metrics/results/per_dataset/dataset~{dataset}_metrics.tsv
+  label_harmonization: /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/snakemake_toolbox/out/label_harmonization/dataset~{dataset}/file_id~{file_id}/cellhint/adata.zarr
+

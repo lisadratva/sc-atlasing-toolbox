@@ -1,0 +1,5 @@
+/tmp/1740421254.877716.shell: line 16: activate: No such file or directory
+++ realpath ../sc-atlassing-toolbox
++ pipeline=/nfs/team205/ld21/repos/sc-atlassing-toolbox
++ snakemake --profile .profiles/local --configfile configs/resources.yaml configs/load_config.yaml configs/marker_genes.yaml configs/outputs.yaml configs/t_cells_0612.yaml --snakefile /nfs/team205/ld21/repos/sc-atlassing-toolbox/workflow/Snakefile --use-conda --rerun-incomplete --keep-going --printshellcmds clustering_all -c 10
+t_cells_0612.sh: line 19: 11170 Segmentation fault      snakemake --profile .profiles/local --configfile configs/resources.yaml configs/load_config.yaml configs/marker_genes.yaml configs/outputs.yaml configs/t_cells_0612.yaml --snakefile $pipeline/workflow/Snakefile --use-conda --rerun-incomplete --keep-going --printshellcmds $@

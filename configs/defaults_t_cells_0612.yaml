@@ -1,0 +1,134 @@
+defaults:
+  preprocessing:
+    raw_counts: X
+    normalize:
+      target_sum: 1e4
+    pca:
+      n_comps: 50
+    highly_variable_genes:
+      n_top_genes: 6000
+      batch_key: dataset_id # does this make sense?
+    extra_hvgs:
+      remove_genes:
+        - XIST
+        # other sex determining genes
+        - https://raw.githubusercontent.com/prabhakarlab/AIDA_Phase1/master/01_QualityControl/list_chrY_nonPAR_genes.txt
+        # immunoglobulin genes
+        - ^IGK.*
+        - ^IGL.*
+        - ^IGHV.*
+        - ^IGHD.*
+        - ^IGHJ.*
+        - ^TRAV.*
+        - ^TRAJ.*
+        - ^TRBV.*
+        - ^TRBD.*
+        - ^TRBJ.*
+        # low quality genes
+        - ^RP.*
+        - ^MT-.*
+      extra_genes:
+        # all genes plus a couple of T cell markers
+        - /nfs/team205/tcr_pipeline/datasets/pan_infection_atlas/miscellaneous/t_cell_object_var_names.csv
+    assemble:
+      - counts
+      - raw_counts
+      - normalize
+      - highly_variable_genes
+      - extra_hvgs
+    colors:
+      - batch
+      - pool
+      - study
+      - harmonized_label
+      - harmonized_cellhint
+      - harmonized_cellhint_coarse
+      - qc_celltype
+      - author_annotation
+      - sex
+      - qc_status
+      # - scrublet_score
+      # - doubletdetection_score
+      # - n_genes
+      # - n_counts
+      # - percent_mito
+      - original_annotation
+      - Lindeboom_broad
+      - Lindeboom_detailed
+      - Cross_tissue_broad
+      - Cross_tissue_detailed
+      - Compartment_prediction
+      - pathogen
+      - infection_stage
+      - infection_status
+  # integration:
+  #   raw_counts: layers/counts
+  #   norm_counts: X
+  #   var_mask:
+  #     # - highly_variable
+  #     - extra_hvgs
+  #   neighbors:
+  #     n_neighbors: 30
+  #   label: harmonized_label
+  #   batch: batch
+  #   output_types:
+  #     - embed
+  #   umap_colors:
+  #     - author_annotation
+  #     - assay
+  #     - batch
+  #     - donor
+  #     - study
+  #     - lineage
+  #     - harmonized_cellhint
+  #     - harmonized_cellhint_coarse
+  #     - majority_reference
+  #     - harmonized_label
+  #     - qc_celltype
+  #     - qc_status
+  #     - disease
+  #     - sex
+  #     - scrublet_score
+  #     - doubletdetection_score
+  #     - n_genes
+  #     - n_counts
+  #     - percent_mito
+  #     # - development_stage
+  #     # - self_reported_ethnicity
+  #   methods:
+  #     unintegrated:
+  #     harmonypy:
+  #       key:
+  #         - assay # don't correct for anything other than batch
+  #         # - assay # additonally correct for assay
+  #     harmony_pytorch:
+  #     scvi:
+  #       n_latent: 30
+  #       n_hidden: 128
+  #       n_layers: 3
+  #       dispersion: gene-batch
+  #       dropout_rate: 0.2
+  #       early_stopping: true
+  #       max_epochs: 100
+  #       use_observed_lib_size: true
+  #       categorical_covariate_keys:
+          # no categorical covariates
+          # - # additionally correct for:
+            # - assay
+      # scpoli:
+      #   cell_type_keys:
+      #     - # unsupervised
+      #     - harmonized_label # supervised
+      #   embedding_dims: 10
+      #   recon_loss: nb
+      #   n_epochs: 10
+      #   unlabeled_prototype_training: false
+      #   early_stopping_kwargs:
+      #     early_stopping_metric: val_prototype_loss
+      #     mode: min
+      #     threshold: 0
+      #     patience: 5
+      #     reduce_lr: true
+      #     lr_patience: 13
+      #     lr_factor: 0.1
+      #   eta: 0.5
