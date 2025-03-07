@@ -1,6 +1,0 @@
-/tmp/1740151900.645248.shell: line 16: activate: No such file or directory
-++ realpath ../sc-atlassing-toolbox
-+ pipeline=/nfs/users/nfs_l/sc-atlassing-toolbox
-+ snakemake --profile .profiles/local --configfile configs/resources.yaml configs/load_config.yaml configs/marker_genes.yaml configs/outputs.yaml configs/t_cells_0612.yaml --snakefile /nfs/users/nfs_l/sc-atlassing-toolbox/workflow/Snakefile --use-conda --rerun-incomplete --keep-going --printshellcmds clustering_all -n
-Using profile .profiles/local for setting default command line arguments.
-Error: profile given but no config.yaml found. Profile has to be given as either absolute path, relative path or name of a directory available in either /etc/xdg/snakemake or /nfs/users/nfs_l/ld21/.config/snakemake.
